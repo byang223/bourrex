@@ -1,0 +1,33 @@
+types:
+  Orientation:
+    - LEFT
+    - RIGHT
+    - FORWARD
+  Ship:
+    player: UserId
+    x: float
+    y: float
+    angle: float
+    hitCount: int
+  CannonBall:
+    id: int
+    x: float
+    y: float
+  PlayerState:
+    ships: Ship[]
+    cannonBalls: CannonBall[]
+
+methods:
+  joinGame:
+  setOrientation:
+    orientation: Orientation
+    accelerating: boolean
+  fireCannon:
+
+auth:
+  anonymous:
+    separator: "-"
+
+userState: PlayerState
+error: string
+tick: 50
