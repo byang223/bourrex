@@ -1,28 +1,55 @@
 types:
-  Orientation:
-    - LEFT
-    - RIGHT
-    - FORWARD
-  Ship:
-    player: UserId
-    x: float
-    y: float
-    angle: float
-    hitCount: int
-  CannonBall:
+  Configuration:
+    timeLimit: int
+    ante: int
+  GameState:
+    - RUNNING
+    - STOPPED
+  Phase:
+    - FOLD
+    - SWAP
+    - PLAY
+  Trick:
     id: int
-    x: float
-    y: float
+    cards: Card[]
+  Player:
+    id: UserId
+    name: string
+    handSize: int
+    chips: int
+    seatPosition: int
+    tricks: Trick[]
+  Game:
+    configuration: Configuration
+    state: GameState
+    phase: Phase
+    round: int
+    players: Player[]
+    pot: int
+    buttonSeatPosition: int?
+    activeSeatPosition: int?
+  Card:
+    rank: string
+    suit: string
   PlayerState:
-    ships: Ship[]
-    cannonBalls: CannonBall[]
+    game: Game
+    hand: Card[]
 
 methods:
+  configureGame:
+    timeLimit: int
+    ante: int
   joinGame:
-  setOrientation:
-    orientation: Orientation
-    accelerating: boolean
-  fireCannon:
+    name: string
+    chips: int
+  startGame:
+  stopGame: 
+  foldHand:
+    fold: boolean
+  swapCards:
+    cards: Card[]
+  play:
+    card: Card
 
 auth:
   anonymous:
